@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input,
+button,
+textarea {
+  border: none;
+  background: none;
+  font-family: 'Factor A', sans-serif;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
