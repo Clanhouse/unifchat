@@ -1,7 +1,7 @@
 import { styled } from "stitches.config";
 
 export default function Home() {
-  return <Component>Hello, world!</Component>;
+  return <Component>Hello, world! Now with preview :)</Component>;
 }
 
 const Component = styled("div", {
