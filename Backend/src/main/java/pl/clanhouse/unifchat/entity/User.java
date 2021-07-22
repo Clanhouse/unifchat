@@ -1,72 +1,37 @@
 package pl.clanhouse.unifchat.entity;
 
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
+import pl.clanhouse.unifchat.BaseEntity;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Collection;
 
 @Entity
 @Data
-public class User implements UserDetails {
+public class User extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
-    private Long userId;
-
-    @Column(name = "login")
+    @Column(unique = true, nullable = false)
     private String login;
 
     @Column(name = "password")
     private String password;
 
-    @Column(name = "firstname")
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "lastname")
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "authority")
-    private String authority;
+    @Column(name = "is_locked")
+    private boolean isLocked;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
+    @Column(name = "is_account_expired")
+    private boolean isAccountExpired;
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
+    @Column(name = "is_credentials_expired")
+    private boolean isCredentialsExpired;
 
-    @Override
-    public String getUsername() {
-        return login;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
+    @Column(name = "is_active")
+    private boolean isActive;
 }
