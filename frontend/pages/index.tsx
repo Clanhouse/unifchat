@@ -1,7 +1,13 @@
 import { styled } from "stitches.config";
+import { Navbar } from "../components/navbar";
 
 export default function Home() {
-  return <Component>Hello, world!</Component>;
+  return (
+    <>
+      <Navbar />
+      <Component>Hello, world!</Component>
+    </>
+  );
 }
 
 const Component = styled("div", {
