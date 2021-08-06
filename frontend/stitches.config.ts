@@ -6,6 +6,8 @@ const stitches = createCss({
     colors: {
       black: "#212126",
       white: "white",
+      grey: "#7A7A7D",
+      background: "#F1F1F1",
     },
     fonts: {
       regular: "'Lexend', sans-serif",
@@ -57,6 +59,9 @@ const stitches = createCss({
       3: "300",
       4: "400",
       max: "999",
+    },
+    shadows: {
+      default: "0px 0px 20px rgba(0, 0, 0, 0.08)",
     },
   },
   media: {

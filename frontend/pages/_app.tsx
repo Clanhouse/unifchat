@@ -5,6 +5,13 @@ const globalStyles = global({
   html: {
     fontFamily: "$regular",
     color: "$black",
+    backgroundColor: "$background",
+  },
+  body: {
+    margin: 0,
+  },
+  "*": {
+    boxSizing: "border-box",
   },
 });
 
