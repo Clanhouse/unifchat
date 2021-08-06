@@ -3,8 +3,13 @@ export type { StitchesVariants } from "@stitches/react";
 
 const stitches = createCss({
   theme: {
-    colors: {},
-    fonts: {},
+    colors: {
+      black: "#212126",
+      white: "white",
+    },
+    fonts: {
+      regular: "'Lexend', sans-serif",
+    },
     space: {
       1: "4px",
       2: "8px",
@@ -189,4 +194,4 @@ const stitches = createCss({
   },
 });
 
-export const { styled, getCssString } = stitches;
+export const { styled, getCssString, global } = stitches;
