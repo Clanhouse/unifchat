@@ -6,6 +6,7 @@ import DiscordLogo from "public/discordIcon.png";
 import SlackLogo from "public/slackIcon.png";
 import AvatarPlaceholder1 from "public/avatar2.png";
 import AvatarPlaceholder2 from "public/avatar3.png";
+import { Container, Header, Page } from "./common";
 
 enum MenuTab {
   All,
@@ -60,10 +61,10 @@ const POSTS = [
 type PostData = typeof POSTS[number];
 
 export const Dashboard = () => (
-  <PageContainer>
+  <Page withNavbar>
     <DashboardContainer>
       <DashboardHeader>
-        <DashboardTitle>Dashboard</DashboardTitle>
+        <Header>Dashboard</Header>
         <DashboardMenu>
           <MenuItem tabVariant={MenuTab.All} />
           <Divider />
@@ -78,7 +79,7 @@ export const Dashboard = () => (
         ))}
       </PostsList>
     </DashboardContainer>
-  </PageContainer>
+  </Page>
 );
 
 const MENU_TABS = {
@@ -158,11 +159,6 @@ const Post = ({ postData }: PostProps) => {
   );
 };
 
-const PageContainer = styled("div", {
-  width: "100%",
-  minHeight: "calc(100vh - $9)",
-});
-
 const DashboardContainer = styled("main", {
   my: "$7",
   px: "$6",
@@ -177,20 +173,13 @@ const DashboardHeader = styled("div", {
   alignItems: "center",
 });
 
-const DashboardTitle = styled("div", {
-  fontSize: "$7",
-  fontWeight: 700,
-});
-
-const DashboardMenu = styled("div", {
+const DashboardMenu = styled(Container, {
   height: 36,
   py: "$2",
   display: "grid",
   gridTemplateColumns: "1fr 1px 1fr 1px 1fr",
   backgroundColor: "$white",
   gap: "$1",
-  borderRadius: "$2",
-  filter: "drop-shadow($shadows$default)",
 });
 
 const MenuLink = styled("a", {
@@ -223,13 +212,10 @@ const PostsList = styled("div", {
   gap: "$5",
 });
 
-const PostContainer = styled("div", {
+const PostContainer = styled(Container, {
   display: "flex",
   flexDirection: "column",
   gap: "$5",
-  backgroundColor: "$white",
-  filter: "drop-shadow($shadows$default)",
-  borderRadius: "$2",
   p: "$5",
 });
 

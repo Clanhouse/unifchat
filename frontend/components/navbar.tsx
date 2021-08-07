@@ -1,14 +1,11 @@
 import { styled } from "stitches.config";
 import Image from "next/image";
-import UnifchatLogo from "public/logo.svg";
 import PlaceholderAvatar from "public/avatar1.png";
+import { Logo, ItemContainer } from "./common";
 
 export const Navbar = () => (
   <NavContainer>
-    <ItemContainer>
-      <Image src={UnifchatLogo} height={32} width={32} alt="Unifchat logo" />
-      <LogoText>UnifChat</LogoText>
-    </ItemContainer>
+    <Logo />
     <ItemContainer>
       <ProfileText>Lew Konopajew</ProfileText>
       <Image
@@ -29,16 +26,6 @@ const NavContainer = styled("nav", {
   justifyContent: "space-between",
   alignItems: "center",
   backgroundColor: "$white",
-});
-
-const ItemContainer = styled("div", {
-  display: "flex",
-  alignItems: "center",
-  gap: "$2",
-});
-
-const LogoText = styled("div", {
-  fontWeight: "700",
 });
 
 const ProfileText = styled("div", {
