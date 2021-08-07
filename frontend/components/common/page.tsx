@@ -2,6 +2,7 @@ import { styled } from "../../stitches.config";
 
 export const Page = styled("div", {
   width: "100%",
+  position: "relative",
 
   variants: {
     withNavbar: {
@@ -12,5 +13,9 @@ export const Page = styled("div", {
         minHeight: " 100vh",
       },
     },
+  },
+
+  defaultVariants: {
+    withNavbar: false,
   },
 });
