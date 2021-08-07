@@ -8,6 +8,8 @@ const stitches = createCss({
       white: "white",
       grey: "#7A7A7D",
       background: "#F1F1F1",
+      input: "#F9F9F9",
+      yellow: "#FFC451",
     },
     fonts: {
       regular: "'Lexend', sans-serif",
@@ -22,6 +24,7 @@ const stitches = createCss({
       7: "48px",
       8: "64px",
       9: "80px",
+      10: "96px",
     },
     sizes: {
       1: "4px",
@@ -33,6 +36,7 @@ const stitches = createCss({
       7: "48px",
       8: "64px",
       9: "80px",
+      10: "96px",
     },
     fontSizes: {
       1: "11px",
