@@ -3,7 +3,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import DiscordLogo from "public/discordIcon.png";
-import AvatarPlaceholder from "public/avatar1.png";
+import SlackLogo from "public/slackIcon.png";
+import AvatarPlaceholder1 from "public/avatar2.png";
+import AvatarPlaceholder2 from "public/avatar3.png";
 
 enum MenuTab {
   All,
@@ -15,6 +17,47 @@ enum Communicator {
   Discord,
   Slack,
 }
+
+const POSTS = [
+  {
+    id: 1,
+    communicator: Communicator.Slack,
+    avatar: AvatarPlaceholder1,
+    time: 1,
+    username: "Alexander Chichaev",
+    content:
+      "Oh yeah, I have already made it, but we didn’t discussed it with Qas yet. I can upload it to the Zeplin and send to you",
+  },
+  {
+    id: 2,
+    communicator: Communicator.Discord,
+    avatar: AvatarPlaceholder2,
+    time: 2,
+    username: "Yuriy Chichaev",
+    content:
+      "Hi Lew, Would you be able to export the SVG icons for the mobile menu and send them to me? Thanks",
+  },
+  {
+    id: 3,
+    communicator: Communicator.Slack,
+    avatar: AvatarPlaceholder1,
+    time: 4,
+    username: "Alexander Chichaev",
+    content:
+      "Oh yeah, I have already made it, but we didn’t discussed it with Qas yet. I can upload it to the Zeplin and send to you",
+  },
+  {
+    id: 4,
+    communicator: Communicator.Discord,
+    avatar: AvatarPlaceholder2,
+    time: 5,
+    username: "Yuriy Chichaev",
+    content:
+      "Hi Lew, Would you be able to export the SVG icons for the mobile menu and send them to me? Thanks",
+  },
+];
+
+type PostData = typeof POSTS[number];
 
 export const Dashboard = () => (
   <PageContainer>
@@ -30,8 +73,8 @@ export const Dashboard = () => (
         </DashboardMenu>
       </DashboardHeader>
       <PostsList>
-        {Array.from(Array(10).keys()).map((key) => (
-          <Post key={key} />
+        {POSTS.map((post) => (
+          <Post postData={post} key={post.id} />
         ))}
       </PostsList>
     </DashboardContainer>
@@ -70,32 +113,50 @@ const MenuItem = ({ tabVariant }: MenuLinkProps) => {
   );
 };
 
-const Post = () => (
-  <PostContainer>
-    <FlexRow>
-      <CommunicatorHeader>
-        <Image src={DiscordLogo} width={20} height={20} alt={"Discord logo"} />
-        <CommunicatorTitle>Discord</CommunicatorTitle>
-      </CommunicatorHeader>
-      <Time>1 min ago</Time>
-    </FlexRow>
-    <ContentRow>
-      <MessageContainer>
-        <MessageTitle>Alexander Chichaev</MessageTitle>
-        <MessageContent>
-          Oh yeah, I have already made it, but we didn’t discussed it with Qas
-          yet. I can upload it to the Zeplin and send to you
-        </MessageContent>
-      </MessageContainer>
-      <Image
-        src={AvatarPlaceholder}
-        width={64}
-        height={64}
-        alt="Avatar placeholder"
-      />
-    </ContentRow>
-  </PostContainer>
-);
+const COMMUNICATOR_DATA = {
+  [Communicator.Discord]: {
+    communicatorImage: DiscordLogo,
+    communicatorName: "Discord",
+  },
+  [Communicator.Slack]: {
+    communicatorImage: SlackLogo,
+    communicatorName: "Slack",
+  },
+} as const;
+
+interface PostProps {
+  postData: PostData;
+}
+
+const Post = ({ postData }: PostProps) => {
+  const { avatar, content, communicator, time, username } = postData;
+  const { communicatorImage, communicatorName } =
+    COMMUNICATOR_DATA[communicator];
+
+  return (
+    <PostContainer>
+      <FlexRow>
+        <CommunicatorHeader>
+          <Image
+            src={communicatorImage}
+            width={20}
+            height={20}
+            alt={"Discord logo"}
+          />
+          <CommunicatorTitle>{communicatorName}</CommunicatorTitle>
+        </CommunicatorHeader>
+        <Time>{time} min ago</Time>
+      </FlexRow>
+      <ContentRow>
+        <MessageContainer>
+          <MessageTitle>{username}</MessageTitle>
+          <MessageContent>{content}</MessageContent>
+        </MessageContainer>
+        <Image src={avatar} width={64} height={64} alt="Avatar placeholder" />
+      </ContentRow>
+    </PostContainer>
+  );
+};
 
 const PageContainer = styled("div", {
   width: "100%",
@@ -103,7 +164,7 @@ const PageContainer = styled("div", {
 });
 
 const DashboardContainer = styled("main", {
-  mt: "$7",
+  my: "$7",
   px: "$6",
   mx: "auto",
   maxWidth: "80ch",
