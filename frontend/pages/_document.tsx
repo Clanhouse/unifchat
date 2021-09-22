@@ -7,9 +7,14 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
+          <link rel="shortcut icon" href="/logo.svg" />
           <style
             id="stitches"
             dangerouslySetInnerHTML={{ __html: getCssString() }}
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap"
+            rel="stylesheet"
           />
         </Head>
         <body>
