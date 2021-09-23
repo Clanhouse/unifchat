@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
-import { global } from "stitches.config";
+import { globalCss } from "stitches.config";
 
-const globalStyles = global({
+const globalStyles = globalCss({
   html: {
     fontFamily: "$regular",
     color: "$black",
