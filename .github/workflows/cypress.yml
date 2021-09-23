@@ -1,0 +1,13 @@
+name: Cypress tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd frontend && yarn --frozen-lockfile
+      - run: cd frontend && yarn build
+      - run: cd frontend && yarn cypress:test
+
