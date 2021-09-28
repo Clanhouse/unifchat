@@ -24,6 +24,10 @@ export const FormContainer = styled("form", {
   width: "100%",
 });
 
+export const HeaderDescription = styled("div", {
+  color: "$grey",
+});
+
 export const InputsContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
